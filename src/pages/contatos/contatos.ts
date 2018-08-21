@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { FirebaseProvider } from '../../providers/firebase/firebase';
 import firebase from 'firebase';
 
 @IonicPage()
@@ -15,12 +14,11 @@ export class ContatosPage {
   usuarios =[];
 
   constructor(
-    private firebaseProvider: FirebaseProvider,
     public navCtrl: NavController, 
     public navParams: NavParams) {
         firebase.auth().onAuthStateChanged(user =>{
           if(user){
-            this.db.ref().once('value', (snap)=>{
+            this.db.ref().on('value', (snap)=>{
               snap.forEach(data =>{
                 if(data.val().usuario.uid != user.uid){
                   this.usuarios.push(data.val().usuario);           
