@@ -3,15 +3,35 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
+import firebase from 'firebase';
+
+firebase.initializeApp({
+  apiKey: "AIzaSyAsGE0tBEPOpZdGzNNozgarIusVIfOr6IY",
+  authDomain: "chatfirebase-d5825.firebaseapp.com",
+  databaseURL: "https://chatfirebase-d5825.firebaseio.com",
+  projectId: "chatfirebase-d5825",
+  storageBucket: "chatfirebase-d5825.appspot.com",
+  messagingSenderId: "477471107767"
+});
+
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = HomePage;
+  rootPage:any = "HomePage";
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+
+    
     platform.ready().then(() => {
+      firebase.auth().onAuthStateChanged(user =>{
+        if(user){
+          this.rootPage = 'HomePage'
+          console.log('autenticado');
+        } else {
+          console.log('nao autenticado');
+        }
+      });
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();

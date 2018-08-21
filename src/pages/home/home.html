@@ -1,14 +1,78 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
-</ion-header>
+    <ion-navbar color="danger">
+      <br>
+      <ion-title>
+        WhatsApp do {{dadosUser?.nome}}
+      </ion-title>   
+      <br>
+      <ion-segment [(ngModel)]="barraEscolha" color="primary">
+        <ion-segment-button value="camera" col-2 (click)="abrirCamera()">
+          <ion-icon name="camera"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="conversas" col-4>
+          Conversas
+        </ion-segment-button>
+        <ion-segment-button value="status" col-3>
+          Status
+        </ion-segment-button>
+        <ion-segment-button value="chamada" col-4>
+          Chamadas
+        </ion-segment-button>
+      </ion-segment>
+    </ion-navbar>
+  </ion-header>
+<ion-content>
+  <div [ngSwitch]="barraEscolha" class="conversas-conteiner">
+    <ion-list *ngSwitchCase="'conversas'">
+      <ion-item (press)="pressiona($event)">
+          <ion-thumbnail item-start>
+          <img src="assets/imgs/anonimo.jpg">
+          </ion-thumbnail>
+          <h2>Nome Usuario</h2>
+          <p>Mensagem do Usuario</p>
+          <p item-end>14:00<br><ion-badge float-right>3</ion-badge></p>
+      </ion-item>   
+    </ion-list>
+        <ion-fab *ngIf="barraEscolha == 'conversas'" bottom right>
+        <button ion-fab color="danger" (click)="listaContatos()"><ion-icon name="contacts"></ion-icon></button>
+      </ion-fab>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+    <ion-list *ngSwitchCase="'status'">
+      <ion-item no-lines>
+          <ion-thumbnail item-start>
+          <img src="assets/imgs/anonimo.jpg">
+          </ion-thumbnail>
+        <h2>Meu status</h2>
+        <p>Ontem 18:43</p>
+      </ion-item>
+      <ion-toolbar class="tamanhoToolbar" padding><strong class="cor-texto">Atualizacoes recentes</strong></ion-toolbar>
+      <ion-item>
+        <ion-thumbnail item-start>
+        <img src="assets/imgs/anonimo.jpg">
+        </ion-thumbnail>
+      <h2>Nome outro Usuario</h2>
+      <p>Ontem 18:43</p>
+      </ion-item>
+      <ion-toolbar class="tamanhoToolbar" padding><strong class="cor-texto">Atualizacoes visualizadas</strong></ion-toolbar>
+      <ion-item>
+        <ion-thumbnail item-start>
+        <img src="assets/imgs/anonimo.jpg">
+        </ion-thumbnail>
+      <h2>Nome outro Usuario</h2>
+      <p>Ontem 18:43</p>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'chamada'">
+      <ion-item>
+        <ion-thumbnail item-start>
+        <img src="assets/imgs/anonimo.jpg">
+        </ion-thumbnail>
+      <h2>Nome outro Usuario</h2>
+      <p>Ontem 18:43</p>
+      <button class="button" item-end ion-button clear><ion-icon name="call"></ion-icon></button>
+      </ion-item>      
+    </ion-list>
+  </div>
+
 </ion-content>

@@ -1,3 +1,50 @@
 page-home {
 
+    ion-segment-button{
+        color: white !important;
+        font-size: 14px !important;
+        border-bottom: 2.5px solid white !important;
+    }
+    .conversas-conteiner{
+    }
+
+    ion-thumbnail{
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    ion-item{
+        // :active{
+        //     background: #dcdcdc !important;
+        // }
+    }
+
+    .imagem{
+        font-size: 100px !important;
+    }
+
+    ion-badge{
+        border-radius: 100% !important;
+    }
+    ion-footer{
+        height: 50px !important;
+    }
+
+    .tamanhoToolbar{
+        height: 4px !important;
+        width: 100% !important
+    }
+
+    .cor-texto{
+        color: color($colors, danger);
+    }
+
+    ion-fab{
+        position: fixed;
+    }
+
+    .button{
+        font-size: 25px !important;
+    }
+
 }

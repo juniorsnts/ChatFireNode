@@ -1,0 +1,30 @@
+page-login {
+
+    ion-content{
+        background: linear-gradient(rgba(255, 255, 255, 0.938), rgba(255, 0, 0, 0.829));
+    }
+
+    .scroll-content{
+        margin-top: 0px !important;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+    
+    .login-container {
+        position: absolute;
+        z-index: 2;
+        top: 155px !important;
+        width: 100%;
+        margin: 0 auto;
+        padding: 10vw;
+        text-align: center;
+        color: #fff;
+    }
+
+    .login-button{
+        height: 80px !important;
+        border-radius: 20px !important;
+    }
+    
+}

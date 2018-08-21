@@ -1,0 +1,42 @@
+<ion-header>
+
+  <ion-navbar color="danger">
+    <ion-list>
+    <ion-item  no-lines>
+      <ion-avatar item-start>
+          <br>
+        <img src="{{contato?.fotoPerfil}}">
+      </ion-avatar>
+      <br>
+      <h2><strong>{{contato?.nome}}</strong></h2>
+    </ion-item>
+  </ion-list>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <div class="conversa-conteiner">
+                
+  </div>
+</ion-content>
+
+  <ion-footer>
+    <ion-toolbar transparent>
+      <ion-row>
+        <ion-col col-10>
+          <ion-item no-lines class="input-enviar">
+            <ion-input autocomplete="true" type="text" placeholder="Digite aqui..."></ion-input>
+          </ion-item>
+        </ion-col>
+          <ion-col col-2>
+            <button ion-button color="danger" class="btn-enviar">
+              <ion-icon name="send"></ion-icon>
+            </button>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>     
+  </ion-footer>
+

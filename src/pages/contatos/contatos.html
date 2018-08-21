@@ -1,0 +1,18 @@
+<ion-header>
+
+  <ion-navbar color="danger">
+    <ion-title>Contatos</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-item *ngFor="let usuario of usuarios" no-lines (click)="conversar(usuario)">
+      <ion-thumbnail item-start>
+        <img src="{{usuario?.fotoPerfil}}">
+      </ion-thumbnail>
+      <h2>{{usuario?.nome}}</h2>
+      <p>Disponivel</p>
+    </ion-item>
+</ion-content>
