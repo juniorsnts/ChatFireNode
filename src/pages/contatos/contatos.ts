@@ -19,6 +19,7 @@ export class ContatosPage {
         firebase.auth().onAuthStateChanged(user =>{
           if(user){
             this.db.ref().on('value', (snap)=>{
+              this.usuarios = [];
               snap.forEach(data =>{
                 if(data.val().usuario.uid != user.uid){
                   this.usuarios.push(data.val().usuario);           

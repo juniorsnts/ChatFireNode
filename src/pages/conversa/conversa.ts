@@ -8,16 +8,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ConversaPage {
 
-  @ViewChild('myInput') myInput: ElementRef;
-
   contato;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.contato = this.navParams.get('contato');
+    this.contato = this.navParams.get('contato');    
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ConversaPage');
+  }
+
+  adjustTextArea(event: any){
+    let textarea: any = event.target;
+    textarea.style.overflow = 'hidden';
+    textarea.style.height = 'auto';
+    textarea.style.height = textarea.scrollHeight + 'px';
+    return;
   }
 
 }

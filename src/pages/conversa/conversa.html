@@ -28,7 +28,7 @@
       <ion-row>
         <ion-col col-10>
           <ion-item no-lines class="input-enviar">
-            <ion-input autocomplete="true" type="text" placeholder="Digite aqui..."></ion-input>
+            <ion-textarea id="myTextArea" rows="1" #myInput (input)="adjustTextArea($event)" autocomplete="true" type="text" placeholder="Digite aqui..."></ion-textarea>
           </ion-item>
         </ion-col>
           <ion-col col-2>

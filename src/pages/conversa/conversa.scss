@@ -29,6 +29,14 @@ page-conversa {
     .input-enviar {
         background: #dcdcdc !important;
         border-radius: 120px !important;
+        width: calc(100% - 10px);
+    }
+    
+    #myTextArea{
+        width: calc(100% - 10px);
+        border: 0;
+        border-radius: 0;
+        background: transparent !important; 
     }
 
 }

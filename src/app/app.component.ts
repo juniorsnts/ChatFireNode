@@ -18,7 +18,7 @@ firebase.initializeApp({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any;
+  rootPage:any = 'HomePage';
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {    
     platform.ready().then(() => {
@@ -26,9 +26,9 @@ export class MyApp {
         if(user){
           console.log('autenticado');
           this.rootPage = 'HomePage';
-        } else {
+        } else if(!user){
           console.log('nao autenticado');
-          this.rootPage = 'LoginPage';
+          this.rootPage = 'LoginPage'
         }
       });
       // Okay, so the platform is ready and our plugins are available.
