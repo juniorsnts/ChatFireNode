@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 import firebase from 'firebase';
 
 @IonicPage()
@@ -14,23 +14,37 @@ export class ContatosPage {
   usuarios =[];
 
   constructor(
+    private toast: ToastController,
+    private loading: LoadingController,
     public navCtrl: NavController, 
     public navParams: NavParams) {
+      let loadingCtrl = this.loading.create({
+        content: 'Carregando contatos',
+        spinner: 'ios-small'        
+      });
+      let toastCtrl = this.toast.create({
+        message: 'Nenhum usuario encontrado',
+        position: 'bottom',
+        duration: 2000
+      });
+      loadingCtrl.present();      
         firebase.auth().onAuthStateChanged(user =>{
           if(user){
             this.db.ref().on('value', (snap)=>{
               this.usuarios = [];
               snap.forEach(data =>{
                 if(data.val().usuario.uid != user.uid){
-                  this.usuarios.push(data.val().usuario);           
-                } else {
-                  return false;
+                  this.usuarios.push(data.val().usuario); 
+                  loadingCtrl.dismiss();
+                } else {                  
+                  loadingCtrl.dismiss().then(()=>{
+                    toastCtrl.present();
+                  });
                 }
               });
             });
           }
         });
-        console.log(this.usuarios);
   }
 
   ionViewDidLoad() {

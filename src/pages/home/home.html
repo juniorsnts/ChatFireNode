@@ -1,8 +1,9 @@
 <ion-header>
     <ion-navbar color="danger">
       <br>
-      <ion-title>
-        WhatsApp do {{dadosUser?.nome}}
+      <ion-title text-center>
+        WhatsApp
+        <ion-icon (click)="logout()" float-right name="md-exit"></ion-icon>
       </ion-title>   
       <br>
       <ion-segment [(ngModel)]="barraEscolha" color="primary">

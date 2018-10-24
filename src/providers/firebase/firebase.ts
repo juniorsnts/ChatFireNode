@@ -79,6 +79,12 @@ export class FirebaseProvider {
     })
   }
 
+  refOn(path, valor){
+    return this.db.ref(path).push(valor);
+  }
 
+  logout(){
+    return firebase.auth().signOut();
+  }
 
 }

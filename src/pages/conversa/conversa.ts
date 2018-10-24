@@ -1,5 +1,7 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { FirebaseProvider } from '../../providers/firebase/firebase';
+import firebase from 'firebase';
 
 @IonicPage()
 @Component({
@@ -10,7 +12,10 @@ export class ConversaPage {
 
   contato;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    private firebaseProvider: FirebaseProvider,
+    public navCtrl: NavController, 
+    public navParams: NavParams) {
     this.contato = this.navParams.get('contato');    
   }
 
@@ -24,6 +29,15 @@ export class ConversaPage {
     textarea.style.height = 'auto';
     textarea.style.height = textarea.scrollHeight + 'px';
     return;
+  }
+
+  enviarMensagem(mensagem){
+    var data = new Date();
+    this.firebaseProvider.refOn('conversas/', {
+      Mensagem: mensagem,
+      uid: firebase.auth().currentUser.uid,
+      hora: data.getHours+';'+data.getMinutes+';'+data.getSeconds
+    })
   }
 
 }

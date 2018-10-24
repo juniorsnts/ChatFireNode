@@ -49,4 +49,8 @@ export class HomePage {
     this.navCtrl.push('ContatosPage');
   }
 
+  logout(){
+    this.firebaseProvider.logout();
+  }
+
 }

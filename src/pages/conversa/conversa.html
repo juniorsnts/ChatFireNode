@@ -19,7 +19,20 @@
 <ion-content>
 
   <div class="conversa-conteiner">
-                
+    <ion-grid>
+      <ion-row>
+        <ion-col offset-5 col-7 class="mensagem_col">
+          <span class="meu_nome">Eu: </span><br>
+          <span text-align:justify class="minha_mensagem">Mensagem</span>
+          <span class="tempo" item-end>14:00</span>
+        </ion-col>
+        <ion-col col-7 class="cor_outro_usuario">
+          <span class="outro_usuario">Nome Qualquer: </span><br>
+          <span text-align:justify class="outra_mensagem">Mensagem</span>
+          <span class="tempo" item-end>14:00</span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>                
   </div>
 </ion-content>
 
@@ -28,11 +41,11 @@
       <ion-row>
         <ion-col col-10>
           <ion-item no-lines class="input-enviar">
-            <ion-textarea id="myTextArea" rows="1" #myInput (input)="adjustTextArea($event)" autocomplete="true" type="text" placeholder="Digite aqui..."></ion-textarea>
+            <ion-textarea id="myTextArea" [(ngModel)]="textoDigitado" rows="1" #myInput (input)="adjustTextArea($event)" autocomplete="true" type="text" placeholder="Digite aqui..."></ion-textarea>
           </ion-item>
         </ion-col>
           <ion-col col-2>
-            <button ion-button color="danger" class="btn-enviar">
+            <button ion-button color="danger" class="btn-enviar" (click)="enviarMensagem(textoDigitado)">
               <ion-icon name="send"></ion-icon>
             </button>
         </ion-col>
